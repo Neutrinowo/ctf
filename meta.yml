@@ -1,0 +1,20 @@
+name: Self service Box
+description: |
+  This is a simple web CTF challenge which requires basic web development skills(HTML, JavaScript, and browser tools).
+
+  **Connection Instructions**:
+  
+  
+  Do the following:
+
+  $ `ssh -L localhost:<local port>:self-service-box:8080 -p 56151 <username>@cs561.cs.umass.edu`
+
+  This starts an SSH session with the SSH server on swarm machine, and this server is connected to the internal network.
+  Now you can open a new terminal window on your machine, and connect to `localhost:<local port>` to access the challenge
+
+value: 100
+category: Web
+flag: CTF_SDaT{B0x_R3al_fl4g}
+
+# administrative
+container_name: TBD

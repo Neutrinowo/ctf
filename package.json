@@ -1,0 +1,22 @@
+{
+  "name": "ctf",
+  "version": "1.0.0",
+  "description": "a simple web ctf as course proj",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Neutrinowo/ctf.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Neutrinowo/ctf/issues"
+  },
+  "homepage": "https://github.com/Neutrinowo/ctf#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

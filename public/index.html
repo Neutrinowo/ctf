@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Self Service Box</title>
+	<style>
+		body {
+		  background-color: white;
+		}
+	</style>
+</head>
+<body>
+	<h1>Self Service Box</h1>
+	<p> </p>
+	<hr>
+
+	<h2>Authentication</h2>
+	<p>The 'retrieve item' function of the box is LOCKED.</p>
+	<p>
+	You need a key to access the box
+	<a style="color:white">..or maybe you don't :) </a>
+	</p>
+
+	<label for="InputKey">Input Key:</label>
+	<input type="text" id="InputKey">
+	<button id="AuthButton">Authenticate</button>
+
+	<hr>
+
+	<h2>Retrieve Item</h2>
+	<p>Input the item you want to get and click 'Get'</p>
+	<label for="item">Item:</label>
+	<input type="text" id="item" disabled>
+	<button id="GetButton" disabled>Get</button>
+	<br><br>
+	<label for="display">Result:</label> <br>
+	<textarea id="display" cols="50" rows="10" readonly disabled></textarea>
+
+	<script>
+		const InputKey = document.getElementById("InputKey");
+		const AuthButton = document.getElementById("AuthButton");
+		const item = document.getElementById("item");
+		const SendButton = document.getElementById("GetButton");
+		const display = document.getElementById("display");
+
+		item.disabled = true;
+		SendButton.disabled = true;
+		display.disabled = true;
+
+		AuthButton.addEventListener("click", () => {
+			fetch(`/auth?key=${InputKey.value}`)
+				.then(response => response.json())
+				.then(data => {
+					if (data.valid) {
+						item.disabled = false;
+						SendButton.disabled = false;
+						display.disabled = false;
+					} else {
+						alert("Invalid key!");
+					}
+				})
+				.catch(error => console.error(error));
+		});
+
+		GetButton.addEventListener("click", () => {
+			fetch(`/get?item=${item.value}`)
+				.then(response => response.json())
+				.then(result => {
+					display.value = result.item;
+				})
+				.catch(error => console.error(error));
+		});
+	</script>
+</body>
+</html>
